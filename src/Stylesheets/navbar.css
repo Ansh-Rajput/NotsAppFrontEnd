@@ -1,0 +1,110 @@
+header{
+    font-size: 2rem;
+    /* outline: 2px solid red; */
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Kanit', sans-serif;
+    height: 7rem;
+    /* background: #2C3A47;
+    background: #fff;
+    color: #fff;
+    color: #000; */
+    box-shadow: 0 0 1rem 0 #dfe6e9;
+    transition: 0.3s;
+}
+/* body{
+    background-color: #2C3A47;
+} */
+header .title{
+    font-size: 2.8rem;
+    letter-spacing: 0.19rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+}
+header nav ul{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    line-height: 7rem;
+    margin: 0;
+}
+header nav ul li {
+    position: relative;
+    width:10rem;
+    text-align: center;
+    line-height: 7rem;
+}
+header nav ul li .link{
+    position: relative;
+    display: inline-block;
+    height: 7rem;
+    width: 100%;
+    text-decoration: none;
+    color: #000;
+    font-weight: 200;
+    font-size: 2rem;
+}
+header nav ul li:hover::before{
+    content: '';
+    position: absolute;
+    color: #000;
+    bottom: 2rem;
+    background-color: #000;
+    width: 100%;
+    height: 0.2rem;
+}
+
+/* toggle Button */
+.toggle{
+    height: 30px;
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+    font-size: 3rem;
+}
+.toggle #checkbox{
+    display: none;
+    margin: 0;
+}
+.toggle .switch{
+    position: relative;
+    display: inline-block;
+    width: 6rem;
+    height: 3rem;
+    background-color: #fff;
+    border-radius: 3rem;
+    transition: 0.3s;
+    background-color: #2d3436;
+}
+.toggle .switch:hover{
+    cursor: pointer;
+}
+.switch::after{
+    content: '';
+    position: absolute;
+    top: 0.1rem;
+    left: 0.1rem;
+    background-color: red;
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    background: #e0e0e0;
+    transition: 0.3s;
+box-shadow:  20px 20px 60px #bebebe,
+             -20px -20px 60px #ffffff;
+            
+}
+.toggle #checkbox:checked + .switch{
+    background-color: #74b9ff;
+}
+.toggle #checkbox:checked + .switch::after{
+    /* top: 0.1rem; */
+    left: 3rem;
+    background-color: #fff;
+}
+
+
+
+

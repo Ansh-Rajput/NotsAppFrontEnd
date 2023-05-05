@@ -1,0 +1,26 @@
+.noteContainer{
+    box-shadow: 0rem 0rem 0.2rem 0.12rem #1b1b1b;
+    width: 23%;
+}
+.noteContainer .heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.noteContainer .heading .icons{
+    display: flex;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.noteContainer .title{
+    font-size: 2rem;
+    margin: 0.5rem 0;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+}
+.noteContainer .discription{
+    font-size: 1.4rem;
+    margin: 0.5rem 0;
+    font-family: 'Kanit', sans-serif;
+}

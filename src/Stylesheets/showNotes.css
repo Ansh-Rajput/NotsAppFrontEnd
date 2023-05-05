@@ -1,0 +1,18 @@
+.Notesbox{
+    width: calc(100% - 40rem);
+    margin: auto;
+}
+
+.Notesbox .notes{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+.noteContainer{
+    padding: 0.1rem;
+    box-shadow: 0rem 0rem 0.2rem 0.12rem black;
+    width: 27rem;
+}
