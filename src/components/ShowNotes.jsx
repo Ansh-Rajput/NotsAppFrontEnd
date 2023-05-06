@@ -46,7 +46,7 @@ const ShowNotes = () => {
                 <p>Tag</p>
                 <input type="text" name='tag' value={newNoteData.tag} onChange={onChange}/>
                 <div className="modalButtons">
-                  <button type="submit" onClick={onSubmit} disabled={(newNoteData.title.length && newNoteData.description.length)?false:true}>Update</button>
+                  <button type="submit" onClick={onSubmit} disabled={(newNoteData.title.length>3 && newNoteData.description.length>5)?false:true}>Update</button>
                   <button onClick={closeModal} >Close</button>
                 </div>
             </form>

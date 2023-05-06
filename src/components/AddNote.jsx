@@ -9,6 +9,7 @@ const AddNote = () => {
     const onclick = (e)=>{
         e.preventDefault();
         addNote(noteData);
+        setNoteData({title:"",description:"",tag:""});
     }
 
     const onChange = (e)=>{
@@ -26,7 +27,7 @@ const AddNote = () => {
                 <input type="text" value={noteData.description} name="description" id="description" onChange={onChange}/>
                 <p>Tag</p>
                 <input type="text" value={noteData.tag} name="tag" id="tag" onChange={onChange}/>
-                <button type="submit" onClick={onclick} disabled={(noteData.title.length && noteData.description.length)?false:true}>Submit</button>
+                <button type="submit" onClick={onclick} disabled={(noteData.title.length>3 && noteData.description.length>5)?false:true}>Submit</button>
             </form>
         </div>
     
