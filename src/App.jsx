@@ -7,6 +7,8 @@ import Home from './components/Home'
 import About from './components/About'
 import Navbar from './components/NavBar';
 import NoteState from './context/noteContext/NoteState';
+import LogIn from './components/LogIn';
+import SignUp from './components/SignUp';
 
 function App() {
   const [mode,setMode] = useState("light");
@@ -29,8 +31,10 @@ function App() {
       <NoteState>
           <Navbar title="NavBar" mode={mode} setMode={setMode} toggleMode={toggleMode}/>
         <Routes>
-          <Route  path="/" element={<Home mode={mode}/>}/>
-          <Route path="/about" element={<About/>} />
+          <Route exact path="/" element={<Home mode={mode}/>}/>
+          <Route exact path="/about" element={<About/>} />
+          <Route exact path="/logIn" element={<LogIn/>} />
+          <Route exact path="/logIn/signUp" element={<SignUp/>} />
         </Routes>
 
       </NoteState>

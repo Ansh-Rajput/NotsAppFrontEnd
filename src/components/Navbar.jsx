@@ -39,7 +39,11 @@ const Navbar = (props) => {
             <div className="toggle">
                 <input type="checkbox" name="checkbox" id="checkbox" onClick={toggleMode} />
                 <label htmlFor="checkbox" className='switch'></label>
-                <ion-icon className='icon' name="contrast-outline"></ion-icon>
+                <i className="far fa-solid fa-circle-user" style={{fontSize:"20rem"}}></i>
+                <Link to="/logIn" className="link" style={{color:`${style.color}`}} >
+                    <ion-icon className='icon' name="person-circle-outline"></ion-icon>
+                </Link>
+                {/* <ion-icon className='icon' name="log-in-outline"></ion-icon> */}
             </div>
         </header>
     </>
