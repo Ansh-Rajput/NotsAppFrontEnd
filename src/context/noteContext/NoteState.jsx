@@ -3,15 +3,16 @@ import NoteContext from './NoteContext'
 
 const NoteState = (props) => {
     const host = "http://localhost:5000";
-    const userNotes = [];
-    const [notes,setUserNotes]  = useState(userNotes);
+    const token = JSON.stringify(localStorage.getItem('token'));
+    // const userNotes = [];
+    const [notes,setUserNotes]  = useState([]);
 
     const fetchNotes = async ()=>{
       const data = await fetch(`${host}/api/note/fetchNotes`,{
         method:"GET",
         headers:{
           "Content-Type": "application/json",
-          "authtoken":`${localStorage.getItem('token')}`
+          "authtoken":`${token}`
         }
       });
       const resJson = await data.json();
@@ -19,8 +20,19 @@ const NoteState = (props) => {
     }
 
     const addNote = async (value)=>{
+      //Add notes to database
+      const data = await fetch(`${host}/api/note/addNotes`,{
+        method:"POST",
+        headers:{
+          "Content-Type": "application/json",
+          "authtoken":`${token}`
+        },
+        body: JSON.stringify({...value})
+      });
+      const resJson = await data.json();
+      
       let note = {
-        "_id": "64554a5a131af44317577ddef",
+        "_id": `${resJson._id}`,
         "userId": "6454ab252ed249eda9d318b4",
         "title": `${value.title}`,
         "description": `${value.description}`,
@@ -28,20 +40,8 @@ const NoteState = (props) => {
         "date": "2023-05-05T18:26:34.974Z",
         "__v": 0
       }
-
-      //Add notes to database
-      const data = await fetch(`${host}/api/note/addNotes`,{
-        method:"POST",
-        headers:{
-          "Content-Type": "application/json",
-          "authtoken":`${localStorage.getItem('token')}`
-        },
-        body: JSON.stringify({...value})
-      });
-      const resJson = await data.json();
-      console.log(resJson);
-
-      setUserNotes(notes.concat(note));
+      const newNote = Array.from(notes).concat(note);
+      setUserNotes(newNote);
     }
     
 
@@ -56,7 +56,7 @@ const NoteState = (props) => {
         method:"DELETE",
         headers:{
           "Content-Type": "application/json",
-          "authtoken":`${localStorage.getItem('token')}`
+          "authtoken":`${token}`
         }
       });
       const resJson = await data.json();
@@ -76,7 +76,7 @@ const NoteState = (props) => {
         method:"PUT",
         headers:{
           "Content-Type": "application/json",
-          "authtoken":`${localStorage.getItem('token')}`
+          "authtoken":`${token}`
         },
         body: JSON.stringify({title:note.title,description:note.description,tag:tag1})
       });
