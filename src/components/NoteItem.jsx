@@ -12,7 +12,7 @@ const NoteItem = (props) => {
           <p className="title">{props.note.title}</p>
           <div className="icons">
             <i className="far fa-trash-alt"onClick={()=>{deleteNote(props.note._id)}}></i>
-            <i className="far fa-edit"></i>
+            <i className="far fa-edit" onClick={()=>{props.showNotesModal(props.note)}}></i>
           </div>
         </div>
         <p className="discription">{props.note.description}</p>

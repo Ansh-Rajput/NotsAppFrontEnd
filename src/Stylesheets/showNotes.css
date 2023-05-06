@@ -16,3 +16,22 @@
     box-shadow: 0rem 0rem 0.2rem 0.12rem black;
     width: 27rem;
 }
+
+
+/* Css for Update note modal */
+.modal{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border: none;
+    min-width: 35rem;
+    border-radius: 3rem;
+}
+.modal::backdrop{
+    filter: blur(50rem);
+    color: red;
+    background-color: #fff;
+}
+.modalButtons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

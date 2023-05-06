@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState} from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import './App.css'
@@ -7,7 +7,6 @@ import Home from './components/Home'
 import About from './components/About'
 import Navbar from './components/NavBar';
 import NoteState from './context/noteContext/NoteState';
-
 
 function App() {
   const [mode,setMode] = useState("light");
@@ -28,8 +27,6 @@ function App() {
     <>
       <BrowserRouter>
       <NoteState>
-
-
           <Navbar title="NavBar" mode={mode} setMode={setMode} toggleMode={toggleMode}/>
         <Routes>
           <Route  path="/" element={<Home mode={mode}/>}/>
