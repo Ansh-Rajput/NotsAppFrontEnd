@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "../Stylesheets/logIn.css"
 import { Link ,useNavigate} from 'react-router-dom'
 
@@ -22,7 +22,7 @@ const LogIn = () => {
     const responce = await data.json();
     console.log(responce);
     if(responce.status){
-      localStorage.setItem("token",responce.token);
+      localStorage.setItem("token",JSON.stringify(responce.token));
       navigate("/");
     }
     else{

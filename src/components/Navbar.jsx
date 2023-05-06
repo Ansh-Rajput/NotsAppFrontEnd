@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react'
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../Stylesheets/navbar.css"
 
 const Navbar = (props) => {
 
-    const location = useLocation();
+    // const location = useLocation();
+    const navigate = useNavigate();
 
-    useEffect(()=>{
-        console.log(location);
-    },[location]);
+    // useEffect(()=>{
+    //     console.log(location);
+    // },[location]);
 
     const {mode,setMode,toggleMode} = props;
     const element = document.querySelector("header nav ul li:hover::before");
@@ -21,6 +22,11 @@ const Navbar = (props) => {
     else{
         style = {backgroundColor:"#1B1B1B",color:"#fff"};
         // element.color = "#fff";
+    }
+
+    const logOut = ()=>{
+        localStorage.removeItem('token');
+        navigate("/logIn");
     }
     
     return (
@@ -40,10 +46,10 @@ const Navbar = (props) => {
                 <input type="checkbox" name="checkbox" id="checkbox" onClick={toggleMode} />
                 <label htmlFor="checkbox" className='switch'></label>
                 <i className="far fa-solid fa-circle-user" style={{fontSize:"20rem"}}></i>
-                <Link to="/logIn" className="link" style={{color:`${style.color}`}} >
+
+                {!(localStorage.getItem('token'))?<Link to="/logIn" className="link" style={{color:`${style.color}`}} >
                     <ion-icon className='icon' name="person-circle-outline"></ion-icon>
-                </Link>
-                {/* <ion-icon className='icon' name="log-in-outline"></ion-icon> */}
+                </Link>:<ion-icon className='icon' name="log-in-outline" onClick={logOut}></ion-icon>}
             </div>
         </header>
     </>

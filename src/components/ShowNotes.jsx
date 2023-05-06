@@ -2,12 +2,20 @@ import React, { useContext, useEffect,useRef,useState } from 'react'
 import NoteContext from '../context/noteContext/NoteContext'
 import NoteItem from './NoteItem'
 import "../Stylesheets/showNotes.css"
+import { useNavigate } from 'react-router-dom'
 // import UpdateNoteModal from './UpdateNoteModal';
 
 const ShowNotes = () => {
   const {notes,fetchNotes,editNote} = useContext(NoteContext);
+  const navigate = useNavigate();
   useEffect(()=>{
-    fetchNotes();
+    const token = localStorage.getItem('token');
+    if(token){
+      fetchNotes();
+    }
+    else{
+      navigate("/logIn")
+    }
   },[]);
   
   const [newNoteData,setNoteData] = useState({_id:"",title:"",description:"",tag:""});
@@ -54,9 +62,9 @@ const ShowNotes = () => {
         <div className="Notesbox">
             <h1>Your Notes</h1>
             <div className="notes">
-                {notes.map((note)=>{
+                {(notes.length)?notes.map((note)=>{
                   return <NoteItem showNotesModal={showNotesModal} key={note._id} note={note}/>
-                })}
+                }):""}
             </div>
         </div>
     </div>
